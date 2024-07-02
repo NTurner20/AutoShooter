@@ -1,0 +1,32 @@
+[gd_scene load_steps=9 format=3 uid="uid://d1hhgi1hptbkc"]
+
+[ext_resource type="Texture2D" uid="uid://bge6vgpk8go76" path="res://assets/Background-01.png" id="1_a86mv"]
+[ext_resource type="Texture2D" uid="uid://crqgvtr5rrh1y" path="res://assets/Background-02.png" id="2_nvmut"]
+[ext_resource type="Texture2D" uid="uid://dmv6gq15rh4k5" path="res://assets/Background-03.png" id="3_aqyuq"]
+[ext_resource type="Script" path="res://background_tile_map.gd" id="4_pl8vm"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_c0yfa"]
+texture = ExtResource("1_a86mv")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kmtwc"]
+texture = ExtResource("2_nvmut")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ushhk"]
+texture = ExtResource("3_aqyuq")
+texture_region_size = Vector2i(512, 512)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_0407m"]
+tile_size = Vector2i(512, 512)
+sources/0 = SubResource("TileSetAtlasSource_c0yfa")
+sources/1 = SubResource("TileSetAtlasSource_kmtwc")
+sources/2 = SubResource("TileSetAtlasSource_ushhk")
+
+[node name="BackgroundTileMap" type="TileMap"]
+tile_set = SubResource("TileSet_0407m")
+format = 2
+script = ExtResource("4_pl8vm")

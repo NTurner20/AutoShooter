@@ -1,21 +1,43 @@
-[gd_scene load_steps=4 format=3 uid="uid://pvhudahfe4ir"]
+[gd_scene load_steps=6 format=3 uid="uid://pvhudahfe4ir"]
 
 [ext_resource type="PackedScene" uid="uid://pyuh7mfep4r2" path="res://player.tscn" id="1_3y3iw"]
 [ext_resource type="Script" path="res://world.gd" id="1_6g4vh"]
-[ext_resource type="PackedScene" uid="uid://bt1sjlwgxjm4j" path="res://enemy.tscn" id="2_hvn0u"]
+[ext_resource type="PackedScene" uid="uid://d1hhgi1hptbkc" path="res://background_tile_map.tscn" id="3_5ops0"]
+[ext_resource type="PackedScene" uid="uid://by1g80fk1c3p6" path="res://UI/XPUI.tscn" id="4_h6sth"]
+[ext_resource type="PackedScene" uid="uid://6d4mqr0546tc" path="res://UI/upgrade_card.tscn" id="5_imots"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6g4vh")
+
+[node name="BackgroundTileMap" parent="." instance=ExtResource("3_5ops0")]
+z_index = -1
 
 [node name="Player" parent="." instance=ExtResource("1_3y3iw")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="Enemy" parent="." instance=ExtResource("2_hvn0u")]
-position = Vector2(718, 316)
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+visible = false
 
-[node name="Enemy2" parent="." instance=ExtResource("2_hvn0u")]
-position = Vector2(348, 524)
+[node name="Xpui" parent="CanvasLayer" instance=ExtResource("4_h6sth")]
 
-[node name="Enemy3" parent="." instance=ExtResource("2_hvn0u")]
-position = Vector2(1008, 106)
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -178.0
+offset_right = 178.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
+layout_mode = 2
+
+[node name="Upgrade Card" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("5_imots")]
+layout_mode = 2
+
+[node name="Upgrade Card2" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("5_imots")]
+layout_mode = 2
+
+[node name="Upgrade Card3" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("5_imots")]
+layout_mode = 2

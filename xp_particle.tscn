@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://cfwn3turwsi0e"]
+
+[ext_resource type="Texture2D" uid="uid://cvlqt34s62oof" path="res://assets/square.png" id="1_ahq0v"]
+[ext_resource type="Script" path="res://xp_particle.gd" id="1_vp2ml"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnrcp"]
+size = Vector2(16, 16)
+
+[node name="XP_Particle" type="Node2D"]
+script = ExtResource("1_vp2ml")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.0117647, 1, 1, 1)
+texture = ExtResource("1_ahq0v")
+
+[node name="Area2D" type="Area2D" parent="." groups=["xp"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_bnrcp")

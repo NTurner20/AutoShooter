@@ -12,5 +12,5 @@ func initialize(direction: Vector2) -> void:
 
 func _on_Bullet_body_entered(body: Node) -> void:
 	if body.is_in_group("enemies"):
-		body.queue_free()
+		body.take_hit()
 		queue_free()

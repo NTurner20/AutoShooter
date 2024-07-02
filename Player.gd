@@ -6,9 +6,16 @@ extends CharacterBody2D
 
 var speed_modifier = 1
 var time_since_last_shot = 0
+var xp = 0
+
+func _ready():
+	position = Vector2(
+		randf_range(0,  1000),
+		randf_range(0, 1000)
+	)
+
 func _process(delta):
 	var input_direction = Vector2.ZERO
-	
 	if Input.is_action_pressed("ui_up"):
 		input_direction.y -= 1
 	if Input.is_action_pressed("ui_down"):
@@ -17,6 +24,9 @@ func _process(delta):
 		input_direction.x -= 1
 	if Input.is_action_pressed("ui_right"):
 		input_direction.x += 1
+		
+	if input_direction != Vector2.ZERO:
+		rotation = input_direction.angle() + deg_to_rad(90)
 	velocity = input_direction.normalized() * speed * speed_modifier * 100 * delta 
 	move_and_slide()
 	
@@ -44,3 +54,12 @@ func find_nearest_enemy() -> Node2D:
 				shortest_distance = distance
 				nearest_enemy = enemy
 	return nearest_enemy	
+
+
+
+
+
+func _on_pickup_area_area_entered(area):
+	if area.is_in_group('xp'):
+		xp += 1
+		area.get_parent().queue_free()
