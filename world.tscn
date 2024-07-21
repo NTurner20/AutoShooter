@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://pvhudahfe4ir"]
+[gd_scene load_steps=10 format=3 uid="uid://pvhudahfe4ir"]
 
 [ext_resource type="PackedScene" uid="uid://pyuh7mfep4r2" path="res://player.tscn" id="1_3y3iw"]
 [ext_resource type="Script" path="res://world.gd" id="1_6g4vh"]
 [ext_resource type="PackedScene" uid="uid://d1hhgi1hptbkc" path="res://background_tile_map.tscn" id="3_5ops0"]
-[ext_resource type="PackedScene" uid="uid://by1g80fk1c3p6" path="res://UI/XPUI.tscn" id="4_h6sth"]
-[ext_resource type="PackedScene" uid="uid://6d4mqr0546tc" path="res://UI/upgrade_card.tscn" id="5_imots"]
+[ext_resource type="PackedScene" uid="uid://wr6e70ixpcw5" path="res://Weapons/pistol.tscn" id="4_co52o"]
+[ext_resource type="Script" path="res://UI/XPUI.gd" id="5_8fq8b"]
+[ext_resource type="PackedScene" uid="uid://bk64ei2jg6vgr" path="res://UI/game_over.tscn" id="6_0d2s7"]
+[ext_resource type="FontFile" uid="uid://cpklkmrqir6it" path="res://assets/fonts/SpaceMono-Regular.ttf" id="6_7olw1"]
+[ext_resource type="PackedScene" uid="uid://dffd2c4qqa8hd" path="res://UI/pause_menu.tscn" id="8_or0xj"]
+[ext_resource type="AudioStream" uid="uid://b4sxicdb8fwik" path="res://assets/8bit-spaceshooter.mp3" id="9_83qsf"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6g4vh")
@@ -15,29 +19,46 @@ z_index = -1
 [node name="Player" parent="." instance=ExtResource("1_3y3iw")]
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
+limit_left = 0
+limit_top = 0
+limit_right = 51200
+limit_bottom = 51200
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="Gun" parent="Player" instance=ExtResource("4_co52o")]
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="ProgressBar" type="ProgressBar" parent="UI"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 20.0
+grow_horizontal = 2
+max_value = 20.0
+step = 1.0
+show_percentage = false
+script = ExtResource("5_8fq8b")
+
+[node name="PlayerHealth" type="ProgressBar" parent="UI"]
+modulate = Color(0.745098, 0, 0, 1)
+offset_left = 16.0
+offset_top = 111.0
+offset_right = 338.0
+offset_bottom = 151.0
+theme_override_fonts/font = ExtResource("6_7olw1")
+value = 100.0
+
+[node name="GameOver" parent="UI" instance=ExtResource("6_0d2s7")]
 visible = false
 
-[node name="Xpui" parent="CanvasLayer" instance=ExtResource("4_h6sth")]
+[node name="PauseMenu" parent="UI" node_paths=PackedStringArray("player") instance=ExtResource("8_or0xj")]
+visible = false
+player = NodePath("../../Player")
 
-[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer"]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -178.0
-offset_right = 178.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="CharacterInfo" parent="UI/PauseMenu" index="2" node_paths=PackedStringArray("player")]
+player = NodePath("../../../Player")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/MarginContainer"]
-layout_mode = 2
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_83qsf")
+autoplay = true
 
-[node name="Upgrade Card" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("5_imots")]
-layout_mode = 2
-
-[node name="Upgrade Card2" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("5_imots")]
-layout_mode = 2
-
-[node name="Upgrade Card3" parent="CanvasLayer/MarginContainer/HBoxContainer" instance=ExtResource("5_imots")]
-layout_mode = 2
+[editable path="UI/PauseMenu"]

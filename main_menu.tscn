@@ -1,0 +1,80 @@
+[gd_scene load_steps=4 format=3 uid="uid://c8ysb2c8riilt"]
+
+[ext_resource type="Script" path="res://MainMenu.gd" id="1_2nir7"]
+[ext_resource type="FontFile" uid="uid://cpklkmrqir6it" path="res://assets/fonts/SpaceMono-Regular.ttf" id="2_y4qbw"]
+[ext_resource type="FontFile" uid="uid://dm2spi8o4lqw1" path="res://assets/fonts/SpaceMono-Bold.ttf" id="3_dimjk"]
+
+[node name="MainMenu" type="CanvasLayer"]
+script = ExtResource("1_2nir7")
+
+[node name="Panel" type="Panel" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -132.0
+offset_right = 200.0
+offset_bottom = 132.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 140)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y4qbw")
+text = "START"
+
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]
+custom_minimum_size = Vector2(350, 120)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y4qbw")
+text = "QUIT"
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 100
+
+[node name="Title" type="Label" parent="Panel/MarginContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_dimjk")
+theme_override_font_sizes/font_size = 64
+text = "SPACE SURV"
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -47.0
+offset_top = -123.0
+offset_right = 47.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 20
+
+[node name="Footer" type="Label" parent="Panel/MarginContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_y4qbw")
+text = "A Mongeezly Games Game"
+
+[connection signal="pressed" from="Panel/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="Panel/VBoxContainer/QuitButton" to="." method="_on_quit_button_pressed"]

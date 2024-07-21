@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dmv6gq15rh4k5"
-path="res://.godot/imported/Background-03.png-f37ade37167a05db6de15357d7d93051.ctex"
+uid="uid://de5m5r88qycqv"
+path="res://.godot/imported/Big Enemy.png-59629bd11c84d7c3aeee17cff4c4332a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Background-03.png"
-dest_files=["res://.godot/imported/Background-03.png-f37ade37167a05db6de15357d7d93051.ctex"]
+source_file="res://assets/Sprites/Big Enemy.png"
+dest_files=["res://.godot/imported/Big Enemy.png-59629bd11c84d7c3aeee17cff4c4332a.ctex"]
 
 [params]
 

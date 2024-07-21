@@ -1,8 +1,8 @@
 extends TileMap
 
 @export var tile_ids = [0, 1, 2]  # The IDs of the tiles in the TileSet
-@export var map_width = 1000  # Adjust as needed
-@export var map_height = 1000  # Adjust as needed
+@export var map_width = 100  # Adjust as needed
+@export var map_height = 100  # Adjust as needed
 
 func _ready():
 	randomize()

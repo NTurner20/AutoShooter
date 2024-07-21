@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bg5iumc5yr4ic"]
+
+[ext_resource type="Texture2D" uid="uid://cvlqt34s62oof" path="res://assets/Sprites/square.png" id="1_3kdp2"]
+[ext_resource type="Script" path="res://health_drop.gd" id="1_aat6j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_br1mr"]
+
+[node name="HealthDrop" type="Area2D" groups=["health"]]
+scale = Vector2(1.8, 1.8)
+script = ExtResource("1_aat6j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_br1mr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0, 1)
+scale = Vector2(1.25, 1.25)
+texture = ExtResource("1_3kdp2")

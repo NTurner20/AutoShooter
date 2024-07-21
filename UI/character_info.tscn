@@ -1,0 +1,209 @@
+[gd_scene load_steps=3 format=3 uid="uid://c160u8i5fyvwa"]
+
+[ext_resource type="Script" path="res://UI/character_info.gd" id="1_n5voj"]
+[ext_resource type="FontFile" uid="uid://cpklkmrqir6it" path="res://assets/fonts/SpaceMono-Regular.ttf" id="2_70dje"]
+
+[node name="CharacterInfo" type="Control" node_paths=PackedStringArray("movement_speed_label", "armor_label", "health_regen_label", "max_health_label")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_n5voj")
+movement_speed_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Attribute Container/VBoxContainer/Movement Speed")
+armor_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Attribute Container3/VBoxContainer/Amor")
+health_regen_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Attribute Container2/VBoxContainer/Health Regen")
+max_health_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Attribute Container4/VBoxContainer/Max Health")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(850, 650)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Attribute Container" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+
+[node name="Movement Speed" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_70dje")
+theme_override_font_sizes/font_size = 20
+text = "Movement Speed: 1
+"
+horizontal_alignment = 1
+
+[node name="Movement Speed Cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_70dje")
+theme_override_font_sizes/font_size = 12
+text = "Cost: 1UP
+"
+horizontal_alignment = 1
+
+[node name="Movement Speed Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_70dje")
+text = "+"
+
+[node name="Attribute Container2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+
+[node name="Health Regen" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_70dje")
+theme_override_font_sizes/font_size = 20
+text = "Damage: 1
+"
+horizontal_alignment = 1
+
+[node name="Health Regen Cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_70dje")
+theme_override_font_sizes/font_size = 12
+text = "Cost: 1UP
+"
+horizontal_alignment = 1
+
+[node name="Health Regen Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_70dje")
+text = "+"
+
+[node name="Attribute Container3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+
+[node name="Amor" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_70dje")
+theme_override_font_sizes/font_size = 20
+text = "Armor: 0
+"
+horizontal_alignment = 1
+
+[node name="Armor Cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_70dje")
+theme_override_font_sizes/font_size = 12
+text = "Cost: 2UP
+"
+horizontal_alignment = 1
+
+[node name="Armor Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_70dje")
+text = "+"
+
+[node name="Attribute Container4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+
+[node name="Max Health" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_70dje")
+theme_override_font_sizes/font_size = 20
+text = "Range: 600
+"
+horizontal_alignment = 1
+
+[node name="Max Health Cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_70dje")
+theme_override_font_sizes/font_size = 12
+text = "Cost: 1UP
+"
+horizontal_alignment = 1
+
+[node name="Max Health Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_70dje")
+text = "+"
+
+[node name="Character" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_70dje")
+text = "Character Stats
+"
+
+[node name="Upgrade Points" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_70dje")
+text = "Upgrade Points: 0
+"
+
+[node name="Back Button" type="Button" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Attribute Container/Movement Speed Button" to="." method="_on_movement_speed_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2/Health Regen Button" to="." method="_on_health_regen_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3/Armor Button" to="." method="_on_armor_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4/Max Health Button" to="." method="_on_max_health_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Back Button" to="." method="_on_back_button_pressed"]
