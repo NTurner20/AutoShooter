@@ -13,6 +13,7 @@ var last_shot_time = 0
 @export var health = 10
 @export var min_xp_squares = 2
 @export var max_xp_squares = 10
+@export var damage = 5
 
 func _ready():
 	player = get_parent().get_node("Player")

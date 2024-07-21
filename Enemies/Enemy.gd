@@ -43,7 +43,7 @@ func die() -> void:
 		var direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 		var distance = randf_range(50, 100)  # Adjust as needed
 		xp_square.target_position = position + direction * distance
-	var healthdrop = randi_range(0,9) # 1 in 10 chance
+	var healthdrop = randi_range(0,10) # 1 in 11 chance
 	if healthdrop == 0:
 		var health_drop = health_drop_scene.instantiate()
 		get_tree().get_root().add_child(health_drop)

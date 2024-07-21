@@ -1,6 +1,6 @@
 extends Control
 @onready var pistol_menu_scene = preload("res://UI/pistol_info.tscn")
-var upgrade_points = 0
+var upgrade_points = 20
 @export var player_menu_scene : Control
 @export var upgrade_label : Label
 @export var level_label : Label

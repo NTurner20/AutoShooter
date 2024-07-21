@@ -8,6 +8,7 @@
 [node name="HealthDrop" type="Area2D" groups=["health"]]
 scale = Vector2(1.8, 1.8)
 script = ExtResource("1_aat6j")
+health = 5
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_br1mr")

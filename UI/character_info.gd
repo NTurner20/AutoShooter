@@ -16,7 +16,10 @@ func _process(delta):
 	pass
 
 func update_labels() -> void:
-	movement_speed_label.text = "Movement Speed: " + str(player.speed_modifier) 
+	if player.speed_modifier >= 1.5:
+		movement_speed_label.text = "Movement Speed: MAX" 
+	else:
+		movement_speed_label.text = "Movement Speed: " + str(player.speed_modifier) 
 	armor_label.text = "Armor: " + str(player.armor)
 	health_regen_label.text = "Health Regen: " + str(player.health_regen)
 	max_health_label.text = "Max Health: " + str(player.max_health)
@@ -24,7 +27,7 @@ func update_labels() -> void:
 	
 
 func _on_movement_speed_button_pressed():
-	if pause_menu.upgrade_points > 0:
+	if pause_menu.upgrade_points > 0 and player.speed_modifier <= 1.5:
 		player.speed_modifier *= 1.1
 		player.speed_modifier = snapped(player.speed_modifier,0.01)
 		apply_upgrade(1)

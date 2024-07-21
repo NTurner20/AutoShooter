@@ -9,7 +9,7 @@ size = Vector2(64, 64)
 [node name="Enemy" type="CharacterBody2D" groups=["enemies"]]
 scale = Vector2(3, 3)
 script = ExtResource("1_pma76")
-speed = 80
+speed = 95
 health = 15
 min_xp_squares = 10
 max_xp_squares = 20

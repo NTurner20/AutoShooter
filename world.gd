@@ -16,7 +16,7 @@ extends Node2D
 var time_since_last_spawn = 0.0
 var next_round = 20
 var time_since_round_start = 0
-@export var round = 1
+@export var round = 12
 var paused = false
 
 
@@ -98,3 +98,7 @@ func get_enemy_spawn_position() -> Vector2:
 				randf_range(-spawn_area_size.y/2, spawn_area_size.y/2)
 			) 
 	return spawn_position
+
+
+func _on_audio_stream_player_finished():
+	$AudioStreamPlayer.play()

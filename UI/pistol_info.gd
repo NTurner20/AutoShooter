@@ -57,7 +57,7 @@ func _on_back_button_pressed():
 
 
 func _on_range_button_pressed():
-	if pause_menu.upgrade_points > 1:
+	if pause_menu.upgrade_points > 0:
 		gun.gun_range += 50
 		pause_menu.upgrade_points -= 1
 		update_labels()
