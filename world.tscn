@@ -12,6 +12,7 @@
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_6g4vh")
+spawn_interval = 2.5
 
 [node name="BackgroundTileMap" parent="." instance=ExtResource("3_5ops0")]
 z_index = -1

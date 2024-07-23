@@ -16,7 +16,7 @@ extends Node2D
 var time_since_last_spawn = 0.0
 var next_round = 20
 var time_since_round_start = 0
-@export var round = 12
+@export var round = 1
 var paused = false
 
 
@@ -25,10 +25,7 @@ func _ready():
 	get_tree().paused = false
 
 func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("pause"):
-		#if get_tree().paused == false:
-			#print('pausing...2')
-			#pause()
+
 	$UI/PlayerHealth.max_value = $Player.max_health
 	$UI/PlayerHealth.value = $Player.health
 	time_since_last_spawn += delta
@@ -46,6 +43,7 @@ func spawn_enemy() -> void:
 	if round < 5:
 		enemy = enemy_scene.instantiate()
 
+
 	elif round < 9:
 		var enemy_index = randi_range(0,1)
 
@@ -53,6 +51,7 @@ func spawn_enemy() -> void:
 			enemy = enemy_scene.instantiate()
 		else:
 			enemy = enemy2_scene.instantiate()
+		enemy.speed += 5
 	elif round < 12:
 		var enemy_index = randi_range(0,2)
 
@@ -60,6 +59,7 @@ func spawn_enemy() -> void:
 			enemy = enemy_scene.instantiate()
 		else:
 			enemy = enemy2_scene.instantiate()
+		enemy.speed += 10
 	else:
 		var enemy_index = randi_range(0,3)
 		enemy = null
@@ -71,6 +71,7 @@ func spawn_enemy() -> void:
 			enemy = enemy_shooter_scene.instantiate()
 		else:
 			enemy = enemy3_scene.instantiate()
+		enemy.speed += 15
 	var spawn_position = get_enemy_spawn_position()
 	print(spawn_position)
 	enemy.global_position = spawn_position
@@ -82,7 +83,7 @@ func spawn_enemy() -> void:
 
 func start_next_round() -> void:
 	round += 1
-	max_enemies += 1
+	max_enemies += 2
 	spawn_interval = spawn_interval * 0.9
 	#print(round)
 	next_round = next_round * 1.3
@@ -102,3 +103,5 @@ func get_enemy_spawn_position() -> Vector2:
 
 func _on_audio_stream_player_finished():
 	$AudioStreamPlayer.play()
+
+

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://dcwu2rx76egwo"]
 
 [ext_resource type="PackedScene" uid="uid://pyuh7mfep4r2" path="res://player.tscn" id="1_1e7tt"]
-[ext_resource type="PackedScene" uid="uid://cfigawythh4i7" path="res://Weapons/shotgun.tscn" id="2_5y5p4"]
 [ext_resource type="PackedScene" uid="uid://d42sxlf3lj3" path="res://Enemies/enemy_shooter.tscn" id="2_7sw1j"]
+[ext_resource type="PackedScene" uid="uid://wr6e70ixpcw5" path="res://Weapons/pistol.tscn" id="2_yoxa3"]
 [ext_resource type="PackedScene" uid="uid://dffd2c4qqa8hd" path="res://UI/pause_menu.tscn" id="4_t1uur"]
 
 [node name="Test" type="Node2D"]
@@ -10,18 +10,13 @@
 [node name="Player" parent="." instance=ExtResource("1_1e7tt")]
 health = 1000
 
-[node name="Gun" parent="Player" instance=ExtResource("2_5y5p4")]
-gun_range = 1000
-penetration = 3
-
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
-[node name="CharacterBody2D" parent="." instance=ExtResource("2_7sw1j")]
-position = Vector2(387, 44)
-health = 300
+[node name="Gun" parent="Player" instance=ExtResource("2_yoxa3")]
 
 [node name="CharacterBody2D2" parent="." instance=ExtResource("2_7sw1j")]
 position = Vector2(359, 371)
+health = 1
 
 [node name="PauseMenu" parent="." instance=ExtResource("4_t1uur")]
 visible = false

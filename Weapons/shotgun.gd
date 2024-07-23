@@ -20,6 +20,7 @@ func shoot() -> void:
 				var bullet = get_parent().bullet_scene.instantiate()
 				bullet.damage = get_parent().damage
 				bullet.position = global_position
+				bullet.get_node("Sprite2D").modulate.g = 0.5
 				var base_direction  = (nearest_enemy.global_position - global_position).normalized()
 				# Calculate angle offset
 				var angle_offset = (i - (spread - 1) / 2.0) * 0.2  # Adjust the spread angle factor as needed

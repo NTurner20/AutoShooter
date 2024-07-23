@@ -164,3 +164,10 @@ func die():
 	get_tree().paused = true
 	var gameOver = get_tree().get_root().get_node("World/UI/GameOver")
 	gameOver.visible = true
+
+
+func _on_health_regen_timeout():
+	if health < max_health:
+		health+=health_regen
+		if health > max_health:
+			health = max_health

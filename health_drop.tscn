@@ -17,3 +17,14 @@ shape = SubResource("RectangleShape2D_br1mr")
 modulate = Color(1, 0, 0, 1)
 scale = Vector2(1.25, 1.25)
 texture = ExtResource("1_3kdp2")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 60.0
+one_shot = true
+autostart = true
+
+[node name="ColorTimer" type="Timer" parent="."]
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="ColorTimer" to="." method="_on_color_timer_timeout"]

@@ -20,8 +20,12 @@ func update_labels() -> void:
 		movement_speed_label.text = "Movement Speed: MAX" 
 	else:
 		movement_speed_label.text = "Movement Speed: " + str(player.speed_modifier) 
+	if player.health_regen >= player.health_regen_max:
+		health_regen_label.text = "Health Regen: MAX"
+	else:
+		health_regen_label.text = "Health Regen: " + str(player.health_regen)
 	armor_label.text = "Armor: " + str(player.armor)
-	health_regen_label.text = "Health Regen: " + str(player.health_regen)
+	
 	max_health_label.text = "Max Health: " + str(player.max_health)
 	$"PanelContainer/MarginContainer/Upgrade Points".text = "Upgrade Points: " +  str(pause_menu.upgrade_points)
 	

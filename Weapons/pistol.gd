@@ -21,6 +21,5 @@ func shoot() -> void:
 		bullet.position = global_position
 
 		var direction = (nearest_enemy.global_position - global_position).normalized()
-		print(gun.penetration)
 		bullet.initialize(direction,gun.penetration)
 		get_tree().get_root().add_child(bullet)

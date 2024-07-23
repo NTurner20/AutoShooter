@@ -91,15 +91,37 @@ custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_vertical = 4
 
-[node name="Button" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
+[node name="ShotgunButton" type="Button" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(300, 100)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 6
 theme_override_fonts/font = ExtResource("1_q5t2f")
 theme_override_font_sizes/font_size = 18
-disabled = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3/ShotgunButton"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3/ShotgunButton/VBoxContainer"]
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+size_flags_vertical = 6
+theme_override_fonts/font = ExtResource("1_q5t2f")
 text = "Shotgun"
+horizontal_alignment = 1
+vertical_alignment = 2
+
+[node name="Label2" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3/ShotgunButton/VBoxContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_q5t2f")
+theme_override_font_sizes/font_size = 12
+text = "Cost: 5UP"
+horizontal_alignment = 1
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="PanelContainer/MarginContainer/HBoxContainer"]
 custom_minimum_size = Vector2(0, 400)
@@ -149,5 +171,6 @@ layout_mode = 1
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Player Button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/Pistol Button" to="." method="_on_pistol_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3/ShotgunButton" to="." method="_on_shotgun_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer2/Button" to="." method="_on_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer2/Quit" to="." method="_on_quit_pressed"]
