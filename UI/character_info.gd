@@ -5,6 +5,8 @@ extends Control
 @export var max_health_label : Label
 @export var player : Node2D
 var pause_menu = null
+@onready var sfx = $"../SFX"
+var upgrade_sound = preload("res://assets/Retro Event Acute 11.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	
@@ -47,7 +49,8 @@ func apply_upgrade(points:int):
 	pause_menu.upgrade_points -= points
 	update_labels()
 	pause_menu.update()
-
+	sfx.stream = upgrade_sound
+	sfx.play()
 func _on_armor_button_pressed():
 	if pause_menu.upgrade_points > 0:
 		player.armor += 1

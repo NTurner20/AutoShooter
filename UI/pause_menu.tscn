@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://dffd2c4qqa8hd"]
+[gd_scene load_steps=6 format=3 uid="uid://dffd2c4qqa8hd"]
 
 [ext_resource type="Script" path="res://UI/pause_menu.gd" id="1_4huy2"]
 [ext_resource type="FontFile" uid="uid://cpklkmrqir6it" path="res://assets/fonts/SpaceMono-Regular.ttf" id="1_q5t2f"]
 [ext_resource type="PackedScene" uid="uid://b7w4o6wm43x0t" path="res://UI/pistol_info.tscn" id="3_5f3qd"]
 [ext_resource type="PackedScene" uid="uid://c160u8i5fyvwa" path="res://UI/character_info.tscn" id="4_cm4hk"]
+[ext_resource type="PackedScene" uid="uid://b7quoujdsm7rp" path="res://UI/shotgun_info.tscn" id="5_8jc5j"]
 
 [node name="PauseMenu" type="Control" node_paths=PackedStringArray("player_menu_scene", "upgrade_label", "level_label")]
 process_mode = 3
@@ -168,6 +169,20 @@ layout_mode = 1
 [node name="CharacterInfo" parent="." instance=ExtResource("4_cm4hk")]
 visible = false
 layout_mode = 1
+
+[node name="ShotgunInfo" parent="." instance=ExtResource("5_8jc5j")]
+visible = false
+layout_mode = 2
+anchors_preset = 0
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = -20.0
+offset_right = 1320.0
+offset_bottom = 900.0
+
+[node name="SFX" type="AudioStreamPlayer" parent="."]
 
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer/Player Button" to="." method="_on_player_button_pressed"]
 [connection signal="pressed" from="PanelContainer/MarginContainer/HBoxContainer/VBoxContainer2/Pistol Button" to="." method="_on_pistol_button_pressed"]

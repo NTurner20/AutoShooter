@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cfigawythh4i7"]
+[gd_scene load_steps=4 format=3 uid="uid://cfigawythh4i7"]
 
 [ext_resource type="PackedScene" uid="uid://0p5sux6s6i8x" path="res://Weapons/gun.tscn" id="1_edntb"]
 [ext_resource type="Script" path="res://Weapons/shotgun.gd" id="2_egwxa"]
+[ext_resource type="AudioStream" uid="uid://s6o01it6gwbd" path="res://assets/Retro Missile Launcher 01.wav" id="3_jcvwa"]
 
 [node name="Gun" node_paths=PackedStringArray("child_weapon") instance=ExtResource("1_edntb")]
 speed = 50
@@ -10,3 +11,6 @@ child_weapon = NodePath("shotgun")
 
 [node name="shotgun" type="Node2D" parent="." index="0"]
 script = ExtResource("2_egwxa")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." index="1"]
+stream = ExtResource("3_jcvwa")

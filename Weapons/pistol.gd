@@ -22,4 +22,5 @@ func shoot() -> void:
 
 		var direction = (nearest_enemy.global_position - global_position).normalized()
 		bullet.initialize(direction,gun.penetration)
+		$"../AudioStreamPlayer".play()
 		get_tree().get_root().add_child(bullet)

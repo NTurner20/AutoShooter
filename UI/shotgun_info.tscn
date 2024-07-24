@@ -1,0 +1,209 @@
+[gd_scene load_steps=3 format=3 uid="uid://b7quoujdsm7rp"]
+
+[ext_resource type="Script" path="res://UI/shotgun_info.gd" id="1_ivdrb"]
+[ext_resource type="FontFile" uid="uid://cpklkmrqir6it" path="res://assets/fonts/SpaceMono-Regular.ttf" id="2_45ck6"]
+
+[node name="ShotgunInfo" type="Control" node_paths=PackedStringArray("attack_speed_label", "damage_label", "range_label", "spread_label")]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ivdrb")
+attack_speed_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Attribute Container/VBoxContainer/Attack Speed")
+damage_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Attribute Container2/VBoxContainer/Damage")
+range_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Attribute Container4/VBoxContainer/Range")
+spread_label = NodePath("PanelContainer/MarginContainer/VBoxContainer/Attribute Container3/VBoxContainer/Spread")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+custom_minimum_size = Vector2(850, 650)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -400.0
+offset_top = -250.0
+offset_right = 400.0
+offset_bottom = 250.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_top = 60
+theme_override_constants/margin_right = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Attribute Container" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+
+[node name="Attack Speed" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_45ck6")
+theme_override_font_sizes/font_size = 20
+text = "Attack Speed: 1
+"
+horizontal_alignment = 1
+
+[node name="Attack Speed Cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_45ck6")
+theme_override_font_sizes/font_size = 12
+text = "Cost: 1UP
+"
+horizontal_alignment = 1
+
+[node name="Attack Speed Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_45ck6")
+text = "+"
+
+[node name="Attribute Container2" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+
+[node name="Damage" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_45ck6")
+theme_override_font_sizes/font_size = 20
+text = "Damage: 1
+"
+horizontal_alignment = 1
+
+[node name="Damage Cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_45ck6")
+theme_override_font_sizes/font_size = 12
+text = "Cost: 1UP
+"
+horizontal_alignment = 1
+
+[node name="Damage Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_45ck6")
+text = "+"
+
+[node name="Attribute Container3" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+
+[node name="Spread" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_45ck6")
+theme_override_font_sizes/font_size = 20
+text = "Spread: 1
+"
+horizontal_alignment = 1
+
+[node name="Spread Cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_45ck6")
+theme_override_font_sizes/font_size = 12
+text = "Cost: 3UP
+"
+horizontal_alignment = 1
+
+[node name="Spread Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_45ck6")
+text = "+"
+
+[node name="Attribute Container4" type="HBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4"]
+custom_minimum_size = Vector2(300, 80)
+layout_mode = 2
+
+[node name="Range" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+theme_override_fonts/font = ExtResource("2_45ck6")
+theme_override_font_sizes/font_size = 20
+text = "Range: 600
+"
+horizontal_alignment = 1
+
+[node name="Range Cost" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_fonts/font = ExtResource("2_45ck6")
+theme_override_font_sizes/font_size = 12
+text = "Cost: 1UP
+"
+horizontal_alignment = 1
+
+[node name="Range Button" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+size_flags_horizontal = 6
+theme_override_fonts/font = ExtResource("2_45ck6")
+text = "+"
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_45ck6")
+text = "Shotgun"
+
+[node name="Upgrade Points" type="Label" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("2_45ck6")
+text = "Upgrade Points: 0
+"
+
+[node name="Back Button" type="Button" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+text = "Back"
+
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Attribute Container/Attack Speed Button" to="." method="_on_attack_speed_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Attribute Container2/Damage Button" to="." method="_on_damage_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3/Spread Button" to="." method="_on_penetration_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Attribute Container3/Spread Button" to="." method="_on_spread_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/Attribute Container4/Range Button" to="." method="_on_range_button_pressed"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/Back Button" to="." method="_on_back_button_pressed"]

@@ -2,6 +2,8 @@ extends CharacterBody2D
 
 @export var speed = 250
 @export var bullet_scene = preload("res://Weapons/Bullet.tscn")
+var level_up_sound = preload("res://assets/Retro PowerUP 09.wav")
+var damage_sound = preload("res://assets/Retro Negative Short 23.wav")
 @export var shoot_interval = 2
 @export var health = 100
 
@@ -14,7 +16,7 @@ var invincible = false
 var time_since_last_shot = 0
 var xp = 0
 var level = 1
-var xp_next_level = 15
+var xp_next_level = 10
 var pause_menu = null
 var max_health = 100
 var range = 1000
@@ -62,54 +64,58 @@ func _process(delta):
 		#shoot()
 		time_since_last_shot = 0
 		
-func shoot() -> void:
-	var nearest_enemy = find_nearest_enemy()
-	if nearest_enemy:
-		if spread > 1:
-			for i in range(spread):
-				var bullet = bullet_scene.instantiate()
-				bullet.damage = damage
-				bullet.position = position
-				var base_direction  = (nearest_enemy.position - position).normalized()
-				# Calculate angle offset
-				var angle_offset = (i - (spread - 1) / 2.0) * 0.1  # Adjust the spread angle factor as needed
-			
-				# Rotate the base direction by the angle offset
-				var rotated_direction = base_direction.rotated(angle_offset)
-
-				bullet.initialize(rotated_direction)
-				get_parent().add_child(bullet)
-		else:
-			var bullet = bullet_scene.instantiate()
-			bullet.damage = damage
-			bullet.position = position
-			var direction = (nearest_enemy.position - position).normalized()
-			bullet.initialize(direction)
-			get_parent().add_child(bullet)
-
-func find_nearest_enemy() -> Node2D:
-	var nearest_enemy = null
-	var shortest_distance = INF
-	for enemy in get_parent().get_children():
-		if enemy.is_in_group("enemies"):
-			var distance = position.distance_to(enemy.position)
-			if distance > range:
-				return nearest_enemy
-			if distance < shortest_distance:
-				shortest_distance = distance
-				nearest_enemy = enemy
-	return nearest_enemy	
+#func shoot() -> void:
+	#var nearest_enemy = find_nearest_enemy()
+	#if nearest_enemy:
+		#if spread > 1:
+			#for i in range(spread):
+				#var bullet = bullet_scene.instantiate()
+				#bullet.damage = damage
+				#bullet.position = position
+				#var base_direction  = (nearest_enemy.position - position).normalized()
+				## Calculate angle offset
+				#var angle_offset = (i - (spread - 1) / 2.0) * 0.1  # Adjust the spread angle factor as needed
+			#
+				## Rotate the base direction by the angle offset
+				#var rotated_direction = base_direction.rotated(angle_offset)
+#
+				#bullet.initialize(rotated_direction)
+				#get_parent().add_child(bullet)
+		#else:
+			#var bullet = bullet_scene.instantiate()
+			#bullet.damage = damage
+			#bullet.position = position
+			#var direction = (nearest_enemy.position - position).normalized()
+			#bullet.initialize(direction)
+			#get_parent().add_child(bullet)
+#
+#func find_nearest_enemy() -> Node2D:
+	#var nearest_enemy = null
+	#var shortest_distance = INF
+	#for enemy in get_parent().get_children():
+		#if enemy.is_in_group("enemies"):
+			#var distance = position.distance_to(enemy.position)
+			#if distance > range:
+				#return nearest_enemy
+			#if distance < shortest_distance:
+				#shortest_distance = distance
+				#nearest_enemy = enemy
+	#return nearest_enemy	
 	
 func level_up():
 	xp = 0
 	xp_next_level = 1.25 * xp_next_level
 	level = level + 1
 	pause_menu.level_up()
+	$SFX.stream = level_up_sound
+	$SFX.play()
 	
 
 func take_hit(body):
 	if body.is_in_group("enemies"):
 		if not invincible:
+			$SFX.stream = damage_sound
+			$SFX.play()
 			invincible = true
 			$Sprite2D/AnimationPlayer.play("flash")
 			health -= (body.damage - armor/2)
@@ -127,6 +133,8 @@ func take_hit(body):
 			if health <= 0:
 				die()
 			body.queue_free()
+			$SFX.stream = damage_sound
+			$SFX.play()
 	
 		
 

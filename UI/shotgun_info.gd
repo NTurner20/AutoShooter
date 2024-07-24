@@ -1,36 +1,28 @@
 extends Control
 
 @export var attack_speed_label : Label
-#@onready var attack_speed_button = $"PanelContainer/MarginContainer/VBoxContainer/Attribute Container/Attack Speed Button"
 @export var damage_label : Label
 @export var range_label : Label
-@export var penetration_label : Label
-@onready var sfx = $"../SFX"
-var upgrade_sound = preload("res://assets/Retro Event Acute 11.wav")
-#@export var player : Node2D
+@export var spread_label : Label
 var gun = null 
 var pause_menu = null
+@onready var sfx = $"../SFX"
+var upgrade_sound = preload("res://assets/Retro Event Acute 11.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	gun = get_tree().get_root().get_node("World/Player/Gun")
 	pause_menu = get_parent()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
+	update_labels()
 func update_labels() -> void:
 	attack_speed_label.text = "Attack Speed: " + str(gun.shot_cooldown)
-	penetration_label.text = "Penetration: " + str(gun.penetration)
+	spread_label.text = "Spread: " + str(gun.get_children()[0].spread)
 	damage_label.text = "Damage: " + str(gun.damage)
 	range_label.text = "Range: " + str(gun.gun_range)
 	$"PanelContainer/MarginContainer/Upgrade Points".text = "Upgrade Points: " +  str(pause_menu.upgrade_points)
 	
 
-
+func get_shotgun():
+	gun = get_tree().get_root().get_node("World/Player/@Node2D@2")
 func _on_attack_speed_button_pressed():
-	
 	if pause_menu.upgrade_points > 0:
 		sfx.stream = upgrade_sound
 		sfx.play()
@@ -50,11 +42,11 @@ func _on_damage_button_pressed():
 		pause_menu.update()
 
 
-func _on_penetration_button_pressed():
-	if pause_menu.upgrade_points > 1 and gun.penetration <= 4:
+func _on_spread_button_pressed():
+	if pause_menu.upgrade_points > 2  and gun.get_children()[0].spread <= 5:
 		sfx.stream = upgrade_sound
 		sfx.play()
-		gun.penetration += 1
+		gun.get_children()[0].spread += 1
 		pause_menu.upgrade_points -= 2
 		update_labels()
 		pause_menu.update() 
@@ -69,7 +61,7 @@ func _on_range_button_pressed():
 	if pause_menu.upgrade_points > 0:
 		sfx.stream = upgrade_sound
 		sfx.play()
-		gun.gun_range += 50
+		gun.gun_range += 25
 		pause_menu.upgrade_points -= 1
 		update_labels()
 		pause_menu.update()
