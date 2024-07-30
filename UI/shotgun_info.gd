@@ -17,7 +17,10 @@ func _ready():
 	update_labels()
 func update_labels() -> void:
 	if gun:
-		attack_speed_label.text = "Attack Speed: " + str(gun.shot_cooldown)
+		if gun.shot_cooldown <= 0.1:
+			attack_speed_label.text = "Attack Speed: MAX"
+		else:
+			attack_speed_label.text = "Attack Speed: " + str(gun.shot_cooldown)
 		if gun.get_children()[0].spread >= 5:
 			spread_label.text = "Spread: MAX"
 		else:
@@ -31,11 +34,10 @@ func get_shotgun():
 	gun = get_tree().get_root().get_node("World/Player/Shotgun")
 	
 func _on_attack_speed_button_pressed():
-	if pause_menu.upgrade_points > 0:
+	if pause_menu.upgrade_points > 0 and gun.shot_cooldown > 0.1:
 		sfx.stream = upgrade_sound
 		sfx.play()
-		gun.shot_cooldown = gun.shot_cooldown*0.9
-		gun.shot_cooldown = snapped(gun.shot_cooldown,0.01)
+		gun.shot_cooldown = gun.shot_cooldown - 0.1
 		pause_menu.upgrade_points -= 1
 		update_labels()
 		pause_menu.update()
@@ -45,18 +47,18 @@ func _on_damage_button_pressed():
 	if pause_menu.upgrade_points > 0:
 		sfx.stream = upgrade_sound
 		sfx.play()
-		gun.damage += 0.2
+		gun.damage += 0.1
 		pause_menu.upgrade_points -= 1
 		update_labels()
 		pause_menu.update()
 
 
 func _on_spread_button_pressed():
-	if pause_menu.upgrade_points > 1  and gun.get_children()[0].spread < max_spread:
+	if pause_menu.upgrade_points > 2  and gun.get_children()[0].spread < max_spread:
 		sfx.stream = upgrade_sound
 		sfx.play()
 		gun.get_children()[0].spread += 1
-		pause_menu.upgrade_points -= 2
+		pause_menu.upgrade_points -= 3
 		update_labels()
 		pause_menu.update() 
 

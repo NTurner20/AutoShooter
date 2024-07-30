@@ -27,6 +27,7 @@ limit_right = 51200
 limit_bottom = 51200
 
 [node name="Gun" parent="Player" instance=ExtResource("4_co52o")]
+damage = 1.0
 
 [node name="UI" type="CanvasLayer" parent="."]
 

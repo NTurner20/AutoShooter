@@ -70,10 +70,10 @@ shape = SubResource("CircleShape2D_cwgai")
 shape = SubResource("CircleShape2D_88raj")
 
 [node name="Invincible" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.25
 
 [node name="HealthRegen" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 60.0
 autostart = true
 
 [node name="SFX" type="AudioStreamPlayer" parent="."]

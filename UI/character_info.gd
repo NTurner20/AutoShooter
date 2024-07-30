@@ -12,7 +12,7 @@ func _ready():
 	pause_menu = get_parent()
 
 func update_labels() -> void:
-	if player.speed_modifier >= 1.5:
+	if player.speed_modifier >= 2:
 		movement_speed_label.text = "Movement Speed: MAX" 
 	else:
 		movement_speed_label.text = "Movement Speed: " + str(player.speed_modifier) 
@@ -28,9 +28,8 @@ func update_labels() -> void:
 	
 
 func _on_movement_speed_button_pressed():
-	if pause_menu.upgrade_points > 0 and player.speed_modifier < 1.51:
-		player.speed_modifier *= 1.1
-		player.speed_modifier = snapped(player.speed_modifier,0.01)
+	if pause_menu.upgrade_points > 0 and player.speed_modifier < 2:
+		player.speed_modifier +=  0.02
 		apply_upgrade(1)
 
 

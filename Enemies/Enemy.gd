@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 @export var speed = 90
-@export var health = 2
+@export var health : float = 2
 @export var health_drop_scene = preload("res://health_drop.tscn")
 @export var xp_square_scene = preload("res://xp_particle.tscn")
 @export var min_xp_squares = 2

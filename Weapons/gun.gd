@@ -3,7 +3,7 @@ extends Node2D
 @export var bullet_scene = preload("res://Weapons/Bullet.tscn")
 @export var gun_range = 600
 @export var shot_cooldown: float = 2.0
-@export var damage = 1
+@export var damage : float = 0.5
 @export var penetration = 1
 var time_since_last_shot = 0
 @export var child_weapon : Node2D

@@ -50,7 +50,7 @@ func spawn_enemy() -> void:
 			enemy = enemy_scene.instantiate()
 		else:
 			enemy = enemy2_scene.instantiate()
-		enemy.speed += 5
+		#enemy.speed += 5
 	elif game_round < 12:
 		var enemy_index = randi_range(0,2)
 
@@ -58,7 +58,7 @@ func spawn_enemy() -> void:
 			enemy = enemy_scene.instantiate()
 		else:
 			enemy = enemy2_scene.instantiate()
-		enemy.speed += 10
+		#enemy.speed += 10
 	else:
 		var enemy_index = randi_range(0,3)
 		enemy = null
@@ -70,9 +70,10 @@ func spawn_enemy() -> void:
 			enemy = enemy_shooter_scene.instantiate()
 		else:
 			enemy = enemy3_scene.instantiate()
-		enemy.speed += 15
+		#enemy.speed += 15
 	var spawn_position = get_enemy_spawn_position()
 	enemy.global_position = spawn_position
+	enemy.speed += game_round*2
 	add_child(enemy)
 
 

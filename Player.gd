@@ -8,7 +8,7 @@ var pickup_sound = preload("res://assets/Pickup.wav")
 @export var shoot_interval = 2
 @export var health: float = 100.0
 
-var speed_modifier = 1
+@export var speed_modifier:float = 1
 var armor: float = 0.0
 var invincible = false
 var xp = 0
@@ -53,8 +53,8 @@ func _process(delta):
 		var body = collision.get_collider()
 		take_hit(body)
 	# health regen
-	if health < max_health:
-		health += health_regen/3000
+	#if health < max_health:
+		#health += health_regen/50000
 		
 	
 func level_up():

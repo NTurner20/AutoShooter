@@ -8,7 +8,6 @@
 [node name="Test" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_1e7tt")]
-health = 1000
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 
