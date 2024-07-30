@@ -1,7 +1,7 @@
 extends Control
 @onready var pistol_menu_scene = preload("res://UI/pistol_info.tscn")
 @onready var shotgun_menu_scene = preload("res://UI/shotgun_info.tscn")
-@export var upgrade_points = 0
+@export var upgrade_points = 50
 @export var player_menu_scene : Control
 @export var upgrade_label : Label
 @export var level_label : Label
@@ -15,7 +15,7 @@ func _ready():
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	if Input.is_action_just_pressed("pause"):
 		if get_tree().paused == true:
 			if $PanelContainer.is_visible():
@@ -79,8 +79,10 @@ func _on_shotgun_button_pressed():
 			n.queue_free()
 		$PanelContainer/MarginContainer/HBoxContainer/VBoxContainer3/ShotgunButton.text = 'Shotgun'
 		var shotgun = shotgun_scene.instantiate()
+		shotgun.name = 'Shotgun'
 		player.add_child(shotgun)
-	else:
+	elif has_shotgun:
 		$ShotgunInfo.show()
 		$ShotgunInfo.get_shotgun()
+		$ShotgunInfo.update_labels()
 		$PanelContainer.hide()

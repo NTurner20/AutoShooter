@@ -16,13 +16,13 @@ func _ready():
 	pause_menu = get_parent()
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func update_labels() -> void:
 	attack_speed_label.text = "Attack Speed: " + str(gun.shot_cooldown)
-	penetration_label.text = "Penetration: " + str(gun.penetration)
+	if gun.penetration > 4:
+		penetration_label.text = "Penetration: MAX"
+	else:
+		penetration_label.text = "Penetration: " + str(gun.penetration)
 	damage_label.text = "Damage: " + str(gun.damage)
 	range_label.text = "Range: " + str(gun.gun_range)
 	$"PanelContainer/MarginContainer/Upgrade Points".text = "Upgrade Points: " +  str(pause_menu.upgrade_points)
@@ -35,6 +35,7 @@ func _on_attack_speed_button_pressed():
 		sfx.stream = upgrade_sound
 		sfx.play()
 		gun.shot_cooldown = gun.shot_cooldown*0.9
+		gun.shot_cooldown = snapped(gun.shot_cooldown,0.01)
 		pause_menu.upgrade_points -= 1
 		update_labels()
 		pause_menu.update()
@@ -51,7 +52,7 @@ func _on_damage_button_pressed():
 
 
 func _on_penetration_button_pressed():
-	if pause_menu.upgrade_points > 1 and gun.penetration <= 4:
+	if pause_menu.upgrade_points > 1 and gun.penetration < 5:
 		sfx.stream = upgrade_sound
 		sfx.play()
 		gun.penetration += 1

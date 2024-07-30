@@ -31,7 +31,8 @@ grow_vertical = 2
 [node name="StartButton" type="Button" parent="Panel/VBoxContainer"]
 custom_minimum_size = Vector2(400, 140)
 layout_mode = 2
-theme_override_fonts/font = ExtResource("2_y4qbw")
+theme_override_fonts/font = ExtResource("3_dimjk")
+theme_override_font_sizes/font_size = 24
 text = "START"
 
 [node name="QuitButton" type="Button" parent="Panel/VBoxContainer"]

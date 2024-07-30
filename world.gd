@@ -9,14 +9,14 @@ extends Node2D
 @export var spawn_area_size = Vector2(51200, 51200)  # Size of the spawn area
 @export var max_enemies = 10  # Maximum number of enemies in the scene
 @export var spawn_radius = 300
-@export var max_spawn_radius = 1500
+@export var max_spawn_radius = 1300
 
 
 
 var time_since_last_spawn = 0.0
 var next_round = 20
 var time_since_round_start = 0
-@export var round = 1
+@export var game_round = 1
 var paused = false
 
 
@@ -40,11 +40,10 @@ func _process(delta: float) -> void:
 
 func spawn_enemy() -> void:
 	var enemy = null
-	if round < 5:
+	if game_round < 5:
 		enemy = enemy_scene.instantiate()
 
-
-	elif round < 9:
+	elif game_round < 9:
 		var enemy_index = randi_range(0,1)
 
 		if enemy_index == 0:
@@ -52,7 +51,7 @@ func spawn_enemy() -> void:
 		else:
 			enemy = enemy2_scene.instantiate()
 		enemy.speed += 5
-	elif round < 12:
+	elif game_round < 12:
 		var enemy_index = randi_range(0,2)
 
 		if enemy_index == 0:
@@ -73,19 +72,14 @@ func spawn_enemy() -> void:
 			enemy = enemy3_scene.instantiate()
 		enemy.speed += 15
 	var spawn_position = get_enemy_spawn_position()
-	print(spawn_position)
 	enemy.global_position = spawn_position
 	add_child(enemy)
-#func pause() -> void:
-	#get_tree().paused = true
-	#$UI/CharacterInfo.visible = true
-	#paused = true
+
 
 func start_next_round() -> void:
-	round += 1
+	game_round += 1
 	max_enemies += 2
 	spawn_interval = spawn_interval * 0.9
-	#print(round)
 	next_round = next_round * 1.3
 	
 func get_enemy_spawn_position() -> Vector2:

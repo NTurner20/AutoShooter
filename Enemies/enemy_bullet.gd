@@ -8,8 +8,8 @@ var time_alive = 0.0
 func _ready():
 	pass # Replace with function body.
 
-func initialize(direction: Vector2) -> void:
-	self.direction = direction
+func initialize(new_direction: Vector2) -> void:
+	self.direction = new_direction
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	position += direction * speed * delta

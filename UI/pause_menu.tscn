@@ -18,6 +18,7 @@ anchor_bottom = 0.5
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_4huy2")
+upgrade_points = 0
 player_menu_scene = NodePath("CharacterInfo")
 upgrade_label = NodePath("PanelContainer/MarginContainer/Upgrade Points")
 level_label = NodePath("PanelContainer/MarginContainer/Level")

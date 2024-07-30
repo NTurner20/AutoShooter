@@ -9,19 +9,14 @@ var pause_menu = null
 var upgrade_sound = preload("res://assets/Retro Event Acute 11.wav")
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	
 	pause_menu = get_parent()
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
 
 func update_labels() -> void:
 	if player.speed_modifier >= 1.5:
 		movement_speed_label.text = "Movement Speed: MAX" 
 	else:
 		movement_speed_label.text = "Movement Speed: " + str(player.speed_modifier) 
+		
 	if player.health_regen >= player.health_regen_max:
 		health_regen_label.text = "Health Regen: MAX"
 	else:
@@ -33,14 +28,14 @@ func update_labels() -> void:
 	
 
 func _on_movement_speed_button_pressed():
-	if pause_menu.upgrade_points > 0 and player.speed_modifier <= 1.5:
+	if pause_menu.upgrade_points > 0 and player.speed_modifier < 1.51:
 		player.speed_modifier *= 1.1
 		player.speed_modifier = snapped(player.speed_modifier,0.01)
 		apply_upgrade(1)
 
 
 func _on_health_regen_button_pressed():
-	if pause_menu.upgrade_points > 0:
+	if pause_menu.upgrade_points > 0 and player.health_regen < player.health_regen_max:
 		player.health_regen += 1
 		apply_upgrade(1)
 		

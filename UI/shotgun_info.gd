@@ -4,6 +4,9 @@ extends Control
 @export var damage_label : Label
 @export var range_label : Label
 @export var spread_label : Label
+
+@export var max_spread = 5
+
 var gun = null 
 var pause_menu = null
 @onready var sfx = $"../SFX"
@@ -13,20 +16,26 @@ func _ready():
 	pause_menu = get_parent()
 	update_labels()
 func update_labels() -> void:
-	attack_speed_label.text = "Attack Speed: " + str(gun.shot_cooldown)
-	spread_label.text = "Spread: " + str(gun.get_children()[0].spread)
-	damage_label.text = "Damage: " + str(gun.damage)
-	range_label.text = "Range: " + str(gun.gun_range)
+	if gun:
+		attack_speed_label.text = "Attack Speed: " + str(gun.shot_cooldown)
+		if gun.get_children()[0].spread >= 5:
+			spread_label.text = "Spread: MAX"
+		else:
+			spread_label.text = "Spread: " + str(gun.get_children()[0].spread)
+		damage_label.text = "Damage: " + str(gun.damage)
+		range_label.text = "Range: " + str(gun.gun_range)
 	$"PanelContainer/MarginContainer/Upgrade Points".text = "Upgrade Points: " +  str(pause_menu.upgrade_points)
 	
 
 func get_shotgun():
-	gun = get_tree().get_root().get_node("World/Player/@Node2D@2")
+	gun = get_tree().get_root().get_node("World/Player/Shotgun")
+	
 func _on_attack_speed_button_pressed():
 	if pause_menu.upgrade_points > 0:
 		sfx.stream = upgrade_sound
 		sfx.play()
 		gun.shot_cooldown = gun.shot_cooldown*0.9
+		gun.shot_cooldown = snapped(gun.shot_cooldown,0.01)
 		pause_menu.upgrade_points -= 1
 		update_labels()
 		pause_menu.update()
@@ -43,7 +52,7 @@ func _on_damage_button_pressed():
 
 
 func _on_spread_button_pressed():
-	if pause_menu.upgrade_points > 2  and gun.get_children()[0].spread <= 5:
+	if pause_menu.upgrade_points > 1  and gun.get_children()[0].spread < max_spread:
 		sfx.stream = upgrade_sound
 		sfx.play()
 		gun.get_children()[0].spread += 1

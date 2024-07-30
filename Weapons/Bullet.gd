@@ -15,21 +15,21 @@ func _process(delta: float) -> void:
 	if player:
 		if (player.position - position).length() > 2000:  # Adjust as needed
 			queue_free()
-func initialize(direction: Vector2, penetration) -> void:
-	self.direction = direction
-	self.penetration = penetration
+func initialize(set_direction: Vector2, set_penetration) -> void:
+	self.direction = set_direction
+	self.penetration = set_penetration
 
 func _on_Bullet_body_entered(body: Node) -> void:
 	if body.is_in_group("enemies"):
 		if body != last_body_enetered:
 			last_body_enetered = body
 			body.take_hit(damage)
-			print(penetration)
+			#print(penetration)
 			if penetration > 1:
 				penetration -= 1
 			elif penetration == 1:
 				queue_free()
 
 
-func _on_body_exited(body):
+func _on_body_exited(_body):
 	last_body_enetered = null

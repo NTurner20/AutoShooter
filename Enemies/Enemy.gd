@@ -24,9 +24,9 @@ func _process(delta: float) -> void:
 		$Sprite2D.rotation = direction.angle() + deg_to_rad(90)
 		move_and_slide()
 
-func take_hit(damage) -> void:
+func take_hit(player_damage) -> void:
 	$HealthBar.visible = true
-	health -= damage
+	health -= player_damage
 	$HealthBar.value = health
 	if health <= 0:
 		die()
@@ -35,10 +35,8 @@ func die() -> void:
 	var num_xp_squares = randi_range(min_xp_squares, max_xp_squares)
 	for i in range(num_xp_squares):
 		var xp_square = xp_square_scene.instantiate()
-		get_tree().get_root().add_child(xp_square)
+		get_tree().get_root().call_deferred("add_child",xp_square)
 		xp_square.position = position
-		
-		
 		# Apply some random movement to each XP square
 		var direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
 		var distance = randf_range(50, 100)  # Adjust as needed
@@ -46,6 +44,6 @@ func die() -> void:
 	var healthdrop = randi_range(0,10) # 1 in 11 chance
 	if healthdrop == 0:
 		var health_drop = health_drop_scene.instantiate()
-		get_tree().get_root().add_child(health_drop)
+		get_tree().get_root().call_deferred("add_child",health_drop)
 		health_drop.position = position
 	queue_free()

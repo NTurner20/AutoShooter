@@ -5,8 +5,8 @@
 [ext_resource type="AudioStream" uid="uid://s6o01it6gwbd" path="res://assets/Retro Missile Launcher 01.wav" id="3_jcvwa"]
 
 [node name="Gun" node_paths=PackedStringArray("child_weapon") instance=ExtResource("1_edntb")]
-speed = 50
 gun_range = 400
+shot_cooldown = 4.0
 child_weapon = NodePath("shotgun")
 
 [node name="shotgun" type="Node2D" parent="." index="0"]

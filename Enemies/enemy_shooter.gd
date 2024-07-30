@@ -46,8 +46,8 @@ func shoot_at_player():
 	bullet.initialize(direction)
 	get_parent().add_child(bullet)
 	
-func take_hit(damage):
-	health -= damage
+func take_hit(taken_damage):
+	health -= taken_damage
 	if health <= 0:
 		die()
 	$HealthBar.value = health
