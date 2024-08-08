@@ -1,0 +1,45 @@
+[gd_scene load_steps=7 format=3 uid="uid://d7nm2rhtarfb"]
+
+[ext_resource type="Script" path="res://Enemies/enemy_shooter2.gd" id="1_0cmfs"]
+[ext_resource type="Texture2D" uid="uid://ci0hqwymookcr" path="res://assets/Sprites/Enemy Shooter.png" id="2_plv4f"]
+[ext_resource type="Script" path="res://Scripts/States/StateMachine.gd" id="3_3yiw2"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyFollow.gd" id="4_ypx5n"]
+[ext_resource type="Script" path="res://Scripts/States/EnemyRun.gd" id="5_ayvof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_itrn4"]
+size = Vector2(126, 126)
+
+[node name="Enemy Shooter" type="CharacterBody2D" groups=["enemies"]]
+collision_mask = 2
+script = ExtResource("1_0cmfs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_itrn4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_plv4f")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+modulate = Color(1, 0, 0, 1)
+offset_left = -63.0
+offset_top = -94.0
+offset_right = 62.0
+offset_bottom = -74.0
+max_value = 2.0
+step = 0.1
+value = 1.0
+show_percentage = false
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_3yiw2")
+initial_state = NodePath("follow")
+
+[node name="follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_ypx5n")
+enemy = NodePath("../..")
+move_speed = 200.0
+
+[node name="run" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_ayvof")
+enemy = NodePath("../..")
+move_speed = 300.0

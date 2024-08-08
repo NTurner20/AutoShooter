@@ -36,7 +36,7 @@ func _physics_process(delta):
 				rotation = direction.angle() - deg_to_rad(90)
 			else:
 				velocity = direction * speed
-				rotation = direction.angle() + deg_to_rad(90)
+				$Sprite2D.rotation = direction.angle() + deg_to_rad(90)
 			move_and_slide()
 				
 func shoot_at_player():

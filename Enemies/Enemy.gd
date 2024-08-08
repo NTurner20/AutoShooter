@@ -12,7 +12,7 @@ var player = null
 
 
 func _ready() -> void:
-	player = get_parent().get_node("Player")
+	player = get_parent().player
 	$HealthBar.max_value = health
 	$HealthBar.value = health
 	$HealthBar.visible = false

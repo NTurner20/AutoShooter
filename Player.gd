@@ -22,12 +22,12 @@ var movements_bounds = Vector2(1000,1000)*512
 
 
 func _ready():
-	#if get_parent().name != 'Test':
-	position = Vector2(
-		randf_range(0,  100*512),
-		randf_range(0, 100*512)
-	)
-	pause_menu = get_tree().get_root().get_node("World/UI/PauseMenu")
+	if get_parent().name != 'Test':
+		position = Vector2(
+			randf_range(0,  100*512),
+			randf_range(0, 100*512)
+		)
+		pause_menu = get_tree().get_root().get_node("World/UI/PauseMenu")
 
 func _process(delta):
 	var input_direction = Vector2.ZERO
