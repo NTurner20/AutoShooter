@@ -16,6 +16,7 @@ extends Node2D
 var time_since_last_spawn = 0.0
 var next_round = 20
 var time_since_round_start = 0
+var boss = false
 @export var game_round = 1
 var paused = false
 
@@ -51,7 +52,7 @@ func spawn_enemy() -> void:
 		else:
 			enemy = enemy2_scene.instantiate()
 		#enemy.speed += 5
-	elif game_round < 12:
+	elif game_round < 11:
 		var enemy_index = randi_range(0,2)
 
 		if enemy_index == 0:
@@ -73,7 +74,7 @@ func spawn_enemy() -> void:
 		#enemy.speed += 15
 	var spawn_position = get_enemy_spawn_position()
 	enemy.global_position = spawn_position
-	enemy.speed += game_round*2
+	enemy.speed += game_round*5
 	add_child(enemy)
 
 
